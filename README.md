@@ -1,0 +1,2 @@
+# textRecognitionService
+Text recognition service
