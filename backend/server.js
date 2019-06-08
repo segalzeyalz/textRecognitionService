@@ -5,7 +5,6 @@ const logger = require("morgan");
 const routers = require("./routers")(express);
 const port = 3000;
 const app = express();
-
 app.use(cors());
 app.use("/", routers);
 
