@@ -1,20 +1,13 @@
 const express = require("express");
-var cors = require("cors");
+let cors = require("cors");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-
+const routers = require("./routers")(express);
 const port = 3000;
 const app = express();
 
 app.use(cors());
-
-const router = express.Router();
-
-router.get("/about", (req, res) => {
-  res.send("about");
-});
-
-app.use("/", router);
+app.use("/", routers);
 
 // launch our backend into a port
 app.listen(port, () => console.log(`LISTENING ON PORT ${port}`));
