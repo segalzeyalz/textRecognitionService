@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core//Typography";
 import PropTypes from "prop-types";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/styles";
 
@@ -26,19 +26,22 @@ const styles = (theme => ({
 })).bind(this, theme);
 
 const App = ({ classes }) => {
+  const [url, changeUrl] = useState("");
   return (
     <div className="App" className={classes.wrapper}>
       <Typography variant="h2" gutterBottom>
         Text Recognizer
       </Typography>
       <TextField
-          label="URL"
-          placeholder="place url of image with text"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
+        label="URL"
+        placeholder="place url of image with text"
+        fullWidth
+        value={url}
+        onChange={e => changeUrl(e.target.value)}
+        margin="normal"
+        InputLabelProps={{
+          shrink: true
+        }}
       />
     </div>
   );
