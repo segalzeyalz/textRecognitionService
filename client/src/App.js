@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Typohraphy from "@material-ui/core//Typography";
-import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core//Typography";
 import PropTypes from "prop-types";
-
+import TextField from '@material-ui/core/TextField';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/styles";
 
 const theme = createMuiTheme();
 
-const styles = theme => ({
+const styles = (theme => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start"
+    flexWrap: "nowrap",
+    justifyContent: "center",
+    alignContent: "stretch",
+    alignItems: "center"
   },
   actions: {
     display: "flex",
@@ -21,13 +23,24 @@ const styles = theme => ({
     position: "sticky",
     top: 0
   }
-});
+})).bind(this, theme);
 
 const App = ({ classes }) => {
   return (
-    <Paper className="App" className={classes.wrapper}>
-      <Typohraphy variant="h1">Input</Typohraphy>
-    </Paper>
+    <div className="App" className={classes.wrapper}>
+      <Typography variant="h2" gutterBottom>
+        Text Recognizer
+      </Typography>
+      <TextField
+          label="URL"
+          placeholder="place url of image with text"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+      />
+    </div>
   );
 };
 
@@ -35,4 +48,4 @@ App.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styles(theme))(App);
+export default withStyles(styles)(App);
