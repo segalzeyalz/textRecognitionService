@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core//Typography";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/styles";
 
@@ -16,17 +18,17 @@ const styles = (theme => ({
     alignContent: "stretch",
     alignItems: "center"
   },
-  actions: {
-    display: "flex",
-    justifyContent: "flex-end",
-    backgroundColor: theme.palette.primary.dark,
-    position: "sticky",
-    top: 0
+  setHeight: {
+    margin: theme.spacing.unit * 2,
+    height: "300px",
+    width: "400px",
+    wordWrap: "break-word"
   }
 })).bind(this, theme);
 
 const App = ({ classes }) => {
   const [url, changeUrl] = useState("");
+  const [imageText, updateImageText] = useState("");
   return (
     <div className="App" className={classes.wrapper}>
       <Typography variant="h2" gutterBottom>
@@ -43,6 +45,17 @@ const App = ({ classes }) => {
           shrink: true
         }}
       />
+      <Button
+        onClick={() => updateImageText(url)}
+        variant="contained"
+        color="primary"
+        className={classes.button}
+      >
+        Get Text
+      </Button>
+      <Paper className={classes.setHeight}>
+        <Typography component="div">{imageText}</Typography>
+      </Paper>
     </div>
   );
 };
