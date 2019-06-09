@@ -3,7 +3,7 @@ const request = require("request");
 const fs = require("fs");
 
 module.exports = (req, res, url) => {
-  const filename = "pic.png";
+  const filename = `${Math.random()*1212121}pic${Math.random()*1212121}.png`;
   const writeFile = fs.createWriteStream(filename);
   request(url)
     .pipe(writeFile)
@@ -16,7 +16,7 @@ module.exports = (req, res, url) => {
         .catch(err => console.error(err))
         .then(result => {
           res.send(result.text);
-          process.exit(0);
+          // process.exit(0);
         });
     });
 };
